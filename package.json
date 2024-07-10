@@ -1,0 +1,31 @@
+{
+  "name": "bookingapp",
+  "version": "1.0.0",
+  "description": "booking app using mern",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shobhit0109/bookingApp.git"
+  },
+  "keywords": [
+    "booking"
+  ],
+  "author": "shobhit",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Shobhit0109/bookingApp/issues"
+  },
+  "homepage": "https://github.com/Shobhit0109/bookingApp#readme",
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "typescript": "^5.5.3"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
