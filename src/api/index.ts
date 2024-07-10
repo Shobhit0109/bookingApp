@@ -2,6 +2,9 @@ import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import authRouter from './routes/auth.js';
+import hotelsRouter from './routes/hotels.js';
+import usersRouter from './routes/users.js';
+import roomsRouter from './routes/rooms.js';
 
 const app = express();
 
@@ -31,13 +34,16 @@ mongoose.connection.on('connected', () => {
 });
 
 //middleware
-app.use('/auth', authRouter);
+app.use('/api/auth', authRouter);
+app.use('/api/hotels', hotelsRouter);
+app.use('/api/users', usersRouter);
+app.use('/api/rooms', roomsRouter);
 
 app.listen(port, () => {
   connect();
   console.log('Server is running on port ' + port);
 });
 
-// app.get('/', (req, res) => {
-//   res.send('Hello World!');
-// });
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
