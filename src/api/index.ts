@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
@@ -11,6 +12,7 @@ const app = express();
 let result = dotenv.config({ path: '../../.env' });
 if (result.error) {
   result = dotenv.config();
+  // console.log(result);
   if (result.error) {
     console.error('Error loading .env file', result.error);
   }
