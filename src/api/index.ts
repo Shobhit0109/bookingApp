@@ -1,4 +1,4 @@
-import express, { Express, Request, Response } from 'express';
+import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import authRouter from './routes/auth.js';
@@ -8,21 +8,26 @@ import roomsRouter from './routes/rooms.js';
 
 const app = express();
 
-const result = dotenv.config();
+let result = dotenv.config({ path: '../../.env' });
 if (result.error) {
-  console.error('Error loading .env file', result.error);
+  result = dotenv.config();
+  if (result.error) {
+    console.error('Error loading .env file', result.error);
+  }
 }
 
 // console.log(process.env.MONGO); // Check loaded variables
 
-const port = Number(process.env.PORT) || 8080;
+const port = Number(process.env['PORT']) || 8080;
 
 const connect = async () => {
   try {
-    await mongoose.connect(process.env.MONGO as string);
+    await mongoose.connect(process.env['MONGO'] as string);
     console.log('Connected to MongoDB');
-  } catch (error: any) {
-    throw new Error(`Failed to connect to MongoDB: ${error.message}`);
+  } catch (error: unknown) {
+    throw new Error(
+      `Failed to connect to MongoDB: ${(error as Error).message}`,
+    );
   }
 };
 
@@ -44,6 +49,6 @@ app.listen(port, () => {
   console.log('Server is running on port ' + port);
 });
 
-app.get('/', (req, res) => {
+app.get('/', (_req, res) => {
   res.send('Hello World!');
 });
