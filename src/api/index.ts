@@ -1,25 +1,17 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-console */
 import express from 'express';
-import dotenv from 'dotenv';
+import loadEnv from './utils/loadEnv.js';
 import mongoose from 'mongoose';
 import authRouter from './routes/auth.js';
 import hotelsRouter from './routes/hotels.js';
 import usersRouter from './routes/users.js';
 import roomsRouter from './routes/rooms.js';
+import cookieParser from 'cookie-parser';
 
 const app = express();
 
-let result = dotenv.config({ path: '../../.env' });
-if (result.error) {
-  result = dotenv.config();
-  // console.log(result);
-  if (result.error) {
-    console.error('Error loading .env file', result.error);
-  }
-}
-
-// console.log(process.env.MONGO); // Check loaded variables
+await loadEnv();
 
 const port = Number(process.env['PORT']) || 8080;
 
@@ -42,6 +34,7 @@ mongoose.connection.on('connected', () => {
 });
 
 //middleware
+app.use(cookieParser());
 app.use(express.json());
 
 app.use('/api/auth', authRouter);
