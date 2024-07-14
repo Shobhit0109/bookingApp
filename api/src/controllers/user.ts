@@ -1,10 +1,10 @@
 import User from '../models/User.js';
-import express from 'express';
+import { Request, Response, NextFunction } from 'express';
 
 export const createUser = async (
-  req: express.Request,
-  res: express.Response,
-  next: express.NextFunction,
+  req: Request,
+  res: Response,
+  next: NextFunction,
 ) => {
   const newUser = new User(req.body);
   try {
@@ -16,9 +16,9 @@ export const createUser = async (
 };
 
 export const updateUser = async (
-  req: express.Request,
-  res: express.Response,
-  next: express.NextFunction,
+  req: Request,
+  res: Response,
+  next: NextFunction,
 ) => {
   try {
     const updateUser = await User.findByIdAndUpdate(
@@ -35,9 +35,9 @@ export const updateUser = async (
 };
 
 export const deleteUser = async (
-  req: express.Request,
-  res: express.Response,
-  next: express.NextFunction,
+  req: Request,
+  res: Response,
+  next: NextFunction,
 ) => {
   try {
     await User.findByIdAndDelete(req.params['id']);
@@ -48,9 +48,9 @@ export const deleteUser = async (
 };
 
 export const getUserById = async (
-  req: express.Request,
-  res: express.Response,
-  next: express.NextFunction,
+  req: Request,
+  res: Response,
+  next: NextFunction,
 ) => {
   try {
     const user = await User.findById(req.params['id']);
@@ -61,9 +61,9 @@ export const getUserById = async (
 };
 
 export const getUsers = async (
-  req: express.Request,
-  res: express.Response,
-  next: express.NextFunction,
+  req: Request,
+  res: Response,
+  next: NextFunction,
 ) => {
   try {
     const users = await User.find();

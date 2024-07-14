@@ -1,13 +1,13 @@
 import bcrypt from 'bcryptjs';
-import express from 'express';
+import { Request, Response, NextFunction } from 'express';
 import User from '../models/User.js';
 import jwt from 'jsonwebtoken';
 import { createError } from '../utils/error.js';
 
 export const register = async (
-  req: express.Request,
-  res: express.Response,
-  next: express.NextFunction,
+  req: Request,
+  res: Response,
+  next: NextFunction,
 ) => {
   const salt = bcrypt.genSaltSync(10);
   const hashedPassword = bcrypt.hashSync(req.body.password, salt);
@@ -26,9 +26,9 @@ export const register = async (
 };
 
 export const login = async (
-  req: express.Request,
-  res: express.Response,
-  next: express.NextFunction,
+  req: Request,
+  res: Response,
+  next: NextFunction,
 ) => {
   try {
     const user = await User.findOne({ username: req.body.username });

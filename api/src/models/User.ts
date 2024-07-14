@@ -1,7 +1,5 @@
 import mongoose from 'mongoose';
 
-// const { Schema } = mongoose;
-
 const UserSchema = new mongoose.Schema(
   {
     username: {
@@ -26,5 +24,3 @@ const UserSchema = new mongoose.Schema(
 );
 
 export default mongoose.model('User', UserSchema);
-
-// body for api testing

@@ -1,7 +1,5 @@
 import mongoose from 'mongoose';
 
-// const { Schema } = mongoose;
-
 const HotelSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -53,20 +51,3 @@ const HotelSchema = new mongoose.Schema({
 });
 
 export default mongoose.model('Hotel', HotelSchema);
-
-// body for api testing
-/*
-{
-  "name": "Hotel Name",
-  "type": "Hotel Type",
-  "city": "City",
-  "address": "Address",
-  "distance": 10,
-  "photos": ["Photo 1", "Photo 2"],
-  "description": "Description",
-  "rating": 4,
-  "rooms": ["Room 1", "Room 2"],
-  "cheapestPrice": 100,
-  "featured": true
-}
-*/

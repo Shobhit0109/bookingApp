@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import express from 'express';
 import loadEnv from './utils/loadEnv.js';
 import mongoose from 'mongoose';
@@ -8,6 +8,7 @@ import hotelsRouter from './routes/hotels.js';
 import usersRouter from './routes/users.js';
 import roomsRouter from './routes/rooms.js';
 import cookieParser from 'cookie-parser';
+import compression from 'compression';
 
 const app = express();
 
@@ -34,6 +35,7 @@ mongoose.connection.on('connected', () => {
 });
 
 //middleware
+app.use(compression());
 app.use(cookieParser());
 app.use(express.json());
 
@@ -52,12 +54,12 @@ app.use(
     //eslint-disable-next-line @typescript-eslint/no-explicit-any
     const errorStatus = (err as any).status || 500;
     const errorMessage = err.message || 'Internal Server Error';
-    console.log('Check');
+
     return res.status(errorStatus).json({
       success: false,
       status: errorStatus,
       message: errorMessage,
-      stack: err.stack,
+      // stack: err.stack,
     });
   },
 );

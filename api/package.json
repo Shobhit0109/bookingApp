@@ -1,7 +1,7 @@
 {
-  "name": "bookingapp",
+  "name": "api-bookingapp",
   "version": "1.0.0",
-  "description": "booking app using mern",
+  "description": "booking app api",
   "main": "dist/api/index.js",
   "type": "module",
   "scripts": {
@@ -11,25 +11,19 @@
     "preserve": "yarn run build",
     "serve": "npx concurrently \"tsc -w\" \"npx nodemon .\""
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Shobhit0109/bookingApp.git"
-  },
   "keywords": [
-    "booking"
+    "booking",
+    "api"
   ],
   "author": "shobhit",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Shobhit0109/bookingApp/issues"
-  },
-  "homepage": "https://github.com/Shobhit0109/bookingApp#readme",
   "devDependencies": {
     "@eslint/compat": "^1.1.0",
     "@eslint/config-array": "^0.17.0",
     "@eslint/js": "^9.6.0",
     "@eslint/object-schema": "^2.1.4",
     "@types/bcryptjs": "^2.4.6",
+    "@types/compression": "^1.7.5",
     "@types/cookie-parser": "^1.4.7",
     "@types/express": "^4.17.21",
     "@types/http-cache-semantics": "^4.0.4",
@@ -54,6 +48,7 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",

@@ -1,10 +1,10 @@
 import Hotel from '../models/Hotels.js';
-import express from 'express';
+import { Request, Response, NextFunction } from 'express';
 
 export const createHotel = async (
-  req: express.Request,
-  res: express.Response,
-  next: express.NextFunction,
+  req: Request,
+  res: Response,
+  next: NextFunction,
 ) => {
   const newHotel = new Hotel(req.body);
   try {
@@ -16,9 +16,9 @@ export const createHotel = async (
 };
 
 export const updateHotel = async (
-  req: express.Request,
-  res: express.Response,
-  next: express.NextFunction,
+  req: Request,
+  res: Response,
+  next: NextFunction,
 ) => {
   try {
     const updateHotel = await Hotel.findByIdAndUpdate(
@@ -35,9 +35,9 @@ export const updateHotel = async (
 };
 
 export const deleteHotel = async (
-  req: express.Request,
-  res: express.Response,
-  next: express.NextFunction,
+  req: Request,
+  res: Response,
+  next: NextFunction,
 ) => {
   try {
     await Hotel.findByIdAndDelete(req.params['id']);
@@ -48,9 +48,9 @@ export const deleteHotel = async (
 };
 
 export const getHotelById = async (
-  req: express.Request,
-  res: express.Response,
-  next: express.NextFunction,
+  req: Request,
+  res: Response,
+  next: NextFunction,
 ) => {
   try {
     const hotel = await Hotel.findById(req.params['id']);
@@ -61,9 +61,9 @@ export const getHotelById = async (
 };
 
 export const getHotels = async (
-  req: express.Request,
-  res: express.Response,
-  next: express.NextFunction,
+  req: Request,
+  res: Response,
+  next: NextFunction,
 ) => {
   try {
     const hotels = await Hotel.find();
